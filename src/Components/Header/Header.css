@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+.header {
+    background-color: #F1F1F1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+ }
+
+ .todo{
+    margin-left: 75px;
+    align-items: center;
+ }
+
+ .todo p{
+    color: #E59432;
+    font-family: "Instrument Serif", serif;
+    font-weight: bolder;
+    font-size: 30px;
+ }
+
+ #search{
+    border-radius: 10px;
+    width: 600px;
+    height: 40px;
+    padding-left:10px ;
+ }
+
+ .search-icon{
+    background-color: #EB874D;
+    border-radius: 10px;
+    height: 40px;
+    width: 40px;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+ }
+
+ .search{
+    display: flex;
+    align-items: center;
+    margin-left: 100px;
+ }
+
+ .bell-icon{
+    background-color: #EB874D;
+    border-radius: 10px;
+    height: 40px;
+    width: 40px;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+ }
+
+ .calender-icon{
+    background-color: #EB874D;
+    border-radius: 10px;
+    height: 40px;
+    width: 40px;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+ }
+
+ .todo,
+ .search,
+ .icon{
+    display:inline-flex ;
+    align-items: center;
+ }
+
+    .icon{
+        display: flex-box;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .date{
+        margin-right: 75px;
+        align-items: center;
+        text-align: center;
+    }
+
+    #date {
+        color: #EB874D;
+        font-weight: bolder;
+    }
