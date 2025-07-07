@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap');
+
+
+.signin-container {
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: 40% center;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10rem;
+    align-items: center; 
+    position: relative;
+}
+
+    .book{
+        font-size: 5ch;
+        font-family: "Instrument Serif", serif;
+        font-weight: 400;
+        font-style: normal;
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 40vw;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .form-container{
+        height:600px ;
+        width:500px ;
+        position: absolute;
+        top: center;
+        right: 5vw;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(1px);
+        border-radius: 25px;
+        box-shadow: 10px 10px 8px;
+    }
+
+    .form-container span{
+        display: block;
+        width:500px;
+        height: 50px;
+        margin-bottom: 10px;
+        padding: 10px;
+        text-align: center;
+        font-weight: bolder;
+        color: black;
+        -webkit-text-stroke: 0.2px white;
+        font-size: 20px;
+        
+    }
+
+    #say{
+        text-align: left;
+        margin-left: 40px;
+    }
+
+    .form{
+        margin: 10px;
+        padding: 10px;
+        height: auto;
+        align-items: center;
+    }
+
+    .form input {
+        margin: auto;
+        width: 400px;
+        padding: 10px;
+        display: block;
+        border-radius: 10px;
+        color: rgb(58, 57, 57);
+        margin-bottom: 20px;
+        background-color: white;
+        
+    }
+
+ .login,
+ .signup {
+     text-align: center;
+ }
+
+ #login {
+     margin: auto;
+     width: 400px;
+     padding: 10px;
+     border-radius: 10px;
+     background-image: linear-gradient(to right, #FD7600, #766F37);
+     cursor: pointer;
+     color: white;
+     font-weight: bolder;
+ }
+
+ .signup {
+     -webkit-text-stroke: 0.2px white;
+     font-weight: bolder;
+     margin-top: 1rem;
+ }
+
+ .signup p {
+     display: inline-block;
+ }
+
+ #signup {
+     border: none;
+     color: white;
+     font-weight: bolder;
+     background: transparent;
+     cursor: pointer;
+     
+ }
+
+ .forgot {
+     text-align: right;
+     margin-right: 20px;
+     margin-bottom: 100px;
+ }
+
+ #forgot {
+     border: none;
+     color: white;
+     font-weight: bolder;
+     background: transparent;
+     cursor: pointer; }  
+     
+     .logo{
+        height:120px;
+        width: 120px;
+     }
+
+     .ditto{
+        height:auto;
+        width: auto;
+        margin-left: 35%;
+     }
+            
+    
+         @media (max-width: 500px) {
+             .book {
+                 left: 50%;
+                 font-size: 1.5rem;
+             }
+    
+             .form-container {
+                 left: 50%;
+                 right: auto;
+                 transform: translateX(-50%);
+                 width: 90%;
+                 padding: 1rem;
+             }
+    
+             .form input,
+             #login {
+                 width: 100%;
+             }   }
