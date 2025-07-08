@@ -1,18 +1,13 @@
-import './App.css'
-import SignIn from './Components/SignIn/SignIn'
-import SignUp from './Components/SignUp/SignUp'
-import Header from './Components/Header/Header';
+import { Routes, Route } from "react-router-dom";
+import Layout from "../src/Layout/Layout";
+import Home from "../src/Pages/Home";
 
-function App() {
-
-
+const App: React.FC = () => {
   return (
-    <div>
-      {/* <SignIn /> */}
-      {/* <SignUp/> */}
-      <Header/>
-    </div>
-  )
-}
+    <Routes>
+      <Route path="/" element={<Layout><Home /></Layout>} />
+    </Routes>
+  );
+};
 
-export default App
+export default App;

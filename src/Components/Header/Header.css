@@ -2,11 +2,18 @@
 
 
 .header {
-    background-color: #F1F1F1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
+   position: fixed;
+      height: 80px;
+      width: 100%;
+      background: #f8f8f8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: auto;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+      z-index: 1000;
  }
 
  .todo{
@@ -82,9 +89,26 @@
         margin-right: 75px;
         align-items: center;
         text-align: center;
+        color: black;
     }
 
     #date {
         color: #EB874D;
         font-weight: bolder;
     }
+
+    .icon,
+    .date{
+      gap: 15px;
+    }
+
+
+       @media (max-width: 200px) {
+          .header {
+             transform: translateX(-100%);
+          }
+   
+   
+       }
+
+  
