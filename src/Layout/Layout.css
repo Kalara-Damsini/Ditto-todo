@@ -26,9 +26,10 @@
 
 .content {
     margin-top: 50px;
-    margin-left: 150px;
+    margin-left: 250px;
     padding: 2rem;
     transition: margin-left 0.3s;
+    position: fixed;
 }
 
 

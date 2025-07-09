@@ -1,0 +1,35 @@
+.add-button,
+h1{
+    display: inline;
+}
+
+.add-task-btn{
+    margin-left: 10px;
+    height: 40px;
+    width: 100px;
+    text-align: center;
+    font-size: large;
+    background-color: #EE8E1D;
+    color: white;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.plus-icon {
+    font-size: 20px;
+    color: #fff;
+    margin: 10px;
+}
+
+.plus-icon,
+.add-task-btn {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.add-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

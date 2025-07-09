@@ -42,18 +42,6 @@
     padding-left: 1.5rem;
 }
 
-.menu-item {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.menu-item:hover {
-    color: #fcd34d;
-}
-
 .logout {
     display: flex;
     align-items: center;
@@ -67,6 +55,35 @@
     color: white;
     font-size: 1.3rem;
 }
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    padding: 0.8rem;
+    border-radius: 8px;
+    transition: 0.3s;
+    text-decoration: none;
+    color: white;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.menu-item.active {
+    background: white;
+    color: #d2691e;
+}
+
+.menu-item.active .icon {
+    color: #d2691e;
+}
+
+
+
+
 
 
 

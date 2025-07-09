@@ -8,6 +8,8 @@ import { FcTodoList } from "react-icons/fc";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoHelpCircle } from "react-icons/io5";
 import {  MdLogout } from "react-icons/md";
+import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Sidebar: React.FC = () => {
 
@@ -22,7 +24,9 @@ const Sidebar: React.FC = () => {
                 </div>
             </div>
             <div className="menu">
-                <div className="menu-item"><LuNotebookPen className="icon"/> Add tasks</div>
+                <NavLink to="/AddTask"  className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>
+                 <LuNotebookPen className="icon"/> Add tasks</NavLink>
+                
                 <div className="menu-item"><FaFolder className="icon"/> Create Categories</div>
                 <div className="menu-item"><FaExclamation className="icon"/> Pending Task</div>
                 <div className="menu-item"><MdOutlineDone className="icon"/> Completed Tasks</div>
