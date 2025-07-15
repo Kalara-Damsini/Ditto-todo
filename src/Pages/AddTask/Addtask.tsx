@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './Addtask.css';
 import { FaPlus } from "react-icons/fa";
 import Popup from "../../Components/Popup/Popup";
@@ -19,6 +19,17 @@ const AddTask: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("tasks");
+    if (stored) {
+      setTasks(JSON.parse(stored));
+    }
+  }, []);
+
+   useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   const handleAddTask = (task: Task) => {
     if (editingIndex !== null) {
