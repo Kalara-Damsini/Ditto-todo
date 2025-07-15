@@ -1,0 +1,97 @@
+.task-card {
+    background: #cceeff;
+    padding: 1rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.edit-btn,
+.delete-btn {
+    background: #ff6600;
+    border: none;
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    color: white;
+    font-size: 0.9rem;
+    margin-left: 0.3rem;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background: red;
+}
+
+
+.task-info {
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+
+.task-description {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+.task-document a {
+    color: #ff6600;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.task-document a:hover {
+    text-decoration: underline;
+}
+
+.task-card.extreme {
+    background: #ffe0e0;
+    border-left: 8px solid #ff0000;
+}
+
+.task-card.moderate {
+    background: #fff3e0;
+    border-left: 8px solid #ff9900;
+}
+
+.task-card.low {
+    background: #e0ffe0;
+    border-left: 8px solid #33cc33;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.status-badge.pending {
+    background: #fce3a3;
+    color: #8a6d3b;
+}
+
+.status-badge.in-progress {
+    background: #d9edf7;
+    color: #31708f;
+}
+
+.status-badge.completed {
+    background: #dff0d8;
+    color: #3c763d;
+}

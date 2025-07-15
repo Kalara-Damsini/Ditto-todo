@@ -8,35 +8,34 @@
     z-index: 1000;
 }
 
-
 .bar .navbar {
     position: fixed;
-    top: 90px;
+    top: 80px;
     left: 0;
     width: 250px;
-    height: calc(100vh - 90px);
+    height: calc(100vh - 80px);
     background: #d2691e;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     z-index: 999;
     overflow-y: auto;
-    transition: transform 0.3s ease;
     box-shadow: 2px 0 12px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
 }
 
 .content {
-    margin-top: 50px;
-    margin-left: 150px;
+    margin-top: 80px;
+    margin-left: 250px;
     padding: 2rem;
-    transition: margin-left 0.3s;
+    height: calc(100vh - 80px);
+    overflow-y: auto;
 }
-
 
 @media (max-width: 500px) {
     .bar .navbar {
         transform: translateX(-100%);
-        top: 90px;
-        height: calc(100vh - 90px);
+        top: 80px;
+        height: calc(100vh - 80px);
     }
 
     .bar .navbar.active {
