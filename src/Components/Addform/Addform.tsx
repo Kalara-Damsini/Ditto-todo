@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './Addform.css';
 import { LuAlarmClock } from "react-icons/lu";
 
-interface Task {
+export interface Task {
   title: string;
   date: string;
   time: string;
@@ -12,7 +12,7 @@ interface Task {
   document: string | null;
 }
 
-const Addform: React.FC<{ onSubmit: (task: Task) => void }> = ({ onSubmit }) => {
+const Addform: React.FC<{ onSubmit: (task: Task) => void, initialData?: Task }> = ({ onSubmit, initialData }) => {
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
   const [hour, setHour] = useState('00');
@@ -23,6 +23,23 @@ const Addform: React.FC<{ onSubmit: (task: Task) => void }> = ({ onSubmit }) => 
   const [priority, setPriority] = useState('');
   const [description, setDescription] = useState('');
   const [document, setDocument] = useState<File | null>(null);
+
+  useEffect(() => {
+    if (initialData) {
+      setTitle(initialData.title);
+      setDate(initialData.date);
+      setDescription(initialData.description);
+      setPriority(initialData.priority);
+      setStatus(initialData.status);
+
+      // split time into hour, minute, AM/PM
+      const [timePart, ampmPart] = initialData.time.split(" ");
+      const [h, m] = timePart.split(":");
+      setHour(h);
+      setMinute(m);
+      setAmpm(ampmPart);
+    }
+  }, [initialData]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,9 +58,9 @@ const Addform: React.FC<{ onSubmit: (task: Task) => void }> = ({ onSubmit }) => 
       document: document ? URL.createObjectURL(document) : null
     };
 
-    onSubmit(newTask); 
+    onSubmit(newTask);
 
-    
+    // Reset form
     setTitle('');
     setDate('');
     setHour('00');
@@ -89,17 +106,18 @@ const Addform: React.FC<{ onSubmit: (task: Task) => void }> = ({ onSubmit }) => 
               <div className="time-picker-dropdown">
                 <select value={hour} onChange={e => setHour(e.target.value)}>
                   {Array.from({ length: 12 }, (_, i) => (i+1).toString().padStart(2,'0')).map(h => (
-                    <option key={h}>{h}</option>
+                    <option key={h} value={h}>{h}</option>
                   ))}
                 </select>
                 <span>:</span>
                 <select value={minute} onChange={e => setMinute(e.target.value)}>
                   {Array.from({ length: 60 }, (_, i) => i.toString().padStart(2,'0')).map(m => (
-                    <option key={m}>{m}</option>
+                    <option key={m} value={m}>{m}</option>
                   ))}
                 </select>
                 <select value={ampm} onChange={e => setAmpm(e.target.value)}>
-                  <option>AM</option><option>PM</option>
+                  <option value="AM">AM</option>
+                  <option value="PM">PM</option>
                 </select>
               </div>
             )}
