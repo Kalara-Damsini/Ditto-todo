@@ -9,7 +9,7 @@ export interface Task {
   status: string;
   priority: string;
   description: string;
-  document: string | null;
+  document: string | null; // this will be a blob URL
 }
 
 const Addform: React.FC<{ onSubmit: (task: Task) => void, initialData?: Task }> = ({ onSubmit, initialData }) => {
@@ -23,7 +23,9 @@ const Addform: React.FC<{ onSubmit: (task: Task) => void, initialData?: Task }> 
   const [priority, setPriority] = useState('');
   const [description, setDescription] = useState('');
   const [document, setDocument] = useState<File | null>(null);
+  const [documentUrl, setDocumentUrl] = useState<string | null>(null);
 
+ 
   useEffect(() => {
     if (initialData) {
       setTitle(initialData.title);
@@ -31,8 +33,9 @@ const Addform: React.FC<{ onSubmit: (task: Task) => void, initialData?: Task }> 
       setDescription(initialData.description);
       setPriority(initialData.priority);
       setStatus(initialData.status);
+      setDocumentUrl(initialData.document);
 
-      // split time into hour, minute, AM/PM
+      
       const [timePart, ampmPart] = initialData.time.split(" ");
       const [h, m] = timePart.split(":");
       setHour(h);
@@ -40,6 +43,16 @@ const Addform: React.FC<{ onSubmit: (task: Task) => void, initialData?: Task }> 
       setAmpm(ampmPart);
     }
   }, [initialData]);
+
+  
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files ? e.target.files[0] : null;
+    setDocument(file);
+    if (file) {
+      const url = URL.createObjectURL(file);
+      setDocumentUrl(url);
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,12 +68,12 @@ const Addform: React.FC<{ onSubmit: (task: Task) => void, initialData?: Task }> 
       status,
       priority,
       description,
-      document: document ? URL.createObjectURL(document) : null
+      document: documentUrl
     };
 
     onSubmit(newTask);
 
-    // Reset form
+    
     setTitle('');
     setDate('');
     setHour('00');
@@ -70,6 +83,7 @@ const Addform: React.FC<{ onSubmit: (task: Task) => void, initialData?: Task }> 
     setPriority('');
     setDescription('');
     setDocument(null);
+    setDocumentUrl(null);
   };
 
   return (
@@ -149,7 +163,12 @@ const Addform: React.FC<{ onSubmit: (task: Task) => void, initialData?: Task }> 
           </div>
           <div className="document">
             <label>Upload Document</label>
-            <input type="file" onChange={e => setDocument(e.target.files ? e.target.files[0] : null)} />
+            <input type="file" onChange={handleFileChange} />
+            {documentUrl && (
+              <p style={{ marginTop: '0.5rem' }}>
+                <a href={documentUrl} target="_blank" rel="noopener noreferrer">📄 View Uploaded Document</a>
+              </p>
+            )}
           </div>
         </div>
 
