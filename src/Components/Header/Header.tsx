@@ -20,7 +20,7 @@ const Header: React.FC = () =>{
             <div className="icon">
                 <FaRegBell className="bell-icon"/>
                 <SlCalender className="calender-icon"/>
-                <div className="date">
+                <div className="cal">
                 <p>Teusday</p>
                 <p id="date">20/06/2023</p>
             </div>

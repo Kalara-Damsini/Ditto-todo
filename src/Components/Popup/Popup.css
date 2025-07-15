@@ -2,6 +2,7 @@
 
 
 .popup-overlay {
+    padding-top: 70px;
     position: fixed;
     top: 0;
     left: 0;
@@ -14,23 +15,26 @@
     z-index: 2000;
 }
 
-.popup-content h1{
-    font-size: 1rem;
-    top: 7.5rem;
-    left: 31rem;
-    position: absolute;
-}
-
 .popup-content {
     background: white;
+    width: 90%;
+    max-width: 800px;
     padding: 2rem;
-    width: 1000px;
-    height: 700px;
+    border-radius: 8px;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
     font-family: "Instrument Serif", serif;
     font-weight: 400;
     font-style: normal;
+    font-size: 1rem;
+    
 }
+.popup-topbar h1 {
+    font-size: 1rem;
+}
+
 
 .close-btn {
     border: none;
@@ -45,3 +49,7 @@
     right: 31rem;
     position: absolute;
 }
+
+
+
+

@@ -1,0 +1,48 @@
+.task-card {
+    background: #cceeff;
+    padding: 1rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.edit-btn,
+.delete-btn {
+    background: #ff6600;
+    border: none;
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    color: white;
+    font-size: 0.9rem;
+    margin-left: 0.3rem;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background: red;
+}
+
+
+.task-info {
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+
+.task-description {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
