@@ -4,7 +4,12 @@ import { ImSearch } from "react-icons/im";
 import { FaRegBell } from "react-icons/fa";
 import { SlCalender } from "react-icons/sl";
 
-const Header: React.FC = () =>{
+interface HeaderProps {
+  searchTerm: string;
+  onSearch: (value: string) => void;
+}
+
+const Header: React.FC <HeaderProps> = ({ searchTerm, onSearch }) =>{
     return(
         <div className="header">
 
@@ -13,7 +18,14 @@ const Header: React.FC = () =>{
             </div>
 
             <div className="search">
-                <input type="text" id="search" name="search" placeholder="Search your task here"></input>
+                <input 
+                type="text" 
+                id="search" 
+                name="search" 
+                placeholder="Search your task here"
+                value={searchTerm}
+                onChange={(e) => onSearch(e.target.value)}
+                />
                 <ImSearch className="search-icon"/>
             </div>
 

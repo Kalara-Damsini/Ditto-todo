@@ -4,6 +4,7 @@ import Sidebar from '../Components/Sidebar/Sidebar';
 import './Layout.css';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  
   return (
     <>
       <Header /> 

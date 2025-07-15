@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import './Addtask.css';
 import { FaPlus } from "react-icons/fa";
 import Popup from "../../Components/Popup/Popup";
 import Addform from "../../Components/Addform/Addform";
 import TaskCard from "../../Components/TaskCard/TaskCard";
+import Header from "../../Components/Header/Header";
+import "./Addtask.css";
 
 export interface Task {
   title: string;
@@ -16,78 +17,57 @@ export interface Task {
 }
 
 const AddTask: React.FC = () => {
-  const [showPopup, setShowPopup] = useState(false);
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [editingIndex, setEditingIndex] = useState<number | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleAddTask = (task: Task) => {
-    if (editingIndex !== null) {
-      const updated = [...tasks];
-      updated[editingIndex] = task;
-      setTasks(updated);
-    } else {
-      setTasks(prev => [...prev, task]);
-    }
+    setTasks(prev => [...prev, task]);
     setShowPopup(false);
-    setEditingIndex(null);
   };
 
-  const handleEdit = (index: number) => {
-    setEditingIndex(index);
-    setShowPopup(true);
-  };
-
-  const handleDelete = (index: number) => {
-    const updated = [...tasks];
-    updated.splice(index, 1);
-    setTasks(updated);
-  };
+  const filteredTasks = tasks.filter(task =>
+    task.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
-    <div className="add-task-container">
-      <div className="add-header">
-        <h1>Add New Task</h1>
-        <button 
-          className="add-task-btn" 
-          onClick={() => {
-            setEditingIndex(null);
-            setShowPopup(true);
-          }}
-        >
-          <FaPlus className="plus-icon" /> Add
-        </button>
-      </div>
+    <>
+      <Header searchTerm={searchTerm} onSearch={setSearchTerm} />
 
-      {showPopup && (
-        <Popup onClose={() => {
-          setShowPopup(false);
-          setEditingIndex(null);
-        }}>
-          <Addform 
-            onSubmit={handleAddTask} 
-            initialData={editingIndex !== null ? tasks[editingIndex] : undefined}
-          />
-        </Popup>
-      )}
+      <div className="add-task-container">
+        <div className="add-header">
+          <h1>Add New Task</h1>
+          <button className="add-task-btn" onClick={() => setShowPopup(true)}>
+            <FaPlus className="plus-icon" /> Add
+          </button>
+        </div>
 
-      <div className="task-list">
-        <h2>Task List</h2>
-        {tasks.length === 0 ? (
-          <div className="task-item">
-            <p>No tasks added yet.</p>
-          </div>
-        ) : (
-          tasks.map((task, index) => (
-            <TaskCard
-              key={index}
-              task={task}
-              onDelete={() => handleDelete(index)}
-              onEdit={() => handleEdit(index)}
-            />
-          ))
+        {showPopup && (
+          <Popup onClose={() => setShowPopup(false)}>
+            <Addform onSubmit={handleAddTask} />
+          </Popup>
         )}
+
+        <div className="task-list">
+          <h2>Task List</h2>
+          {filteredTasks.length === 0 ? (
+            <div className="task-item">
+              <p>No tasks found.</p>
+            </div>
+          ) : (
+            filteredTasks.map((task, index) => (
+              <TaskCard
+                key={index}
+                task={task}
+                onDelete={() =>
+                  setTasks(prev => prev.filter((_, i) => i !== index))
+                }
+              />
+            ))
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

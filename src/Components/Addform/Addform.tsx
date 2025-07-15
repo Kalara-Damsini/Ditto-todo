@@ -32,7 +32,6 @@ const Addform: React.FC<{ onSubmit: (task: Task) => void, initialData?: Task }> 
       setPriority(initialData.priority);
       setStatus(initialData.status);
 
-      // split time into hour, minute, AM/PM
       const [timePart, ampmPart] = initialData.time.split(" ");
       const [h, m] = timePart.split(":");
       setHour(h);
@@ -60,7 +59,7 @@ const Addform: React.FC<{ onSubmit: (task: Task) => void, initialData?: Task }> 
 
     onSubmit(newTask);
 
-    // Reset form
+   
     setTitle('');
     setDate('');
     setHour('00');
